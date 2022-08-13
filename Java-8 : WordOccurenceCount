@@ -1,83 +1,58 @@
+ 
+ 
+ 
+             1.)  Count the occurance of each word
+ 
 
-
-    String str="Welcome to this wold where can do whatever you want whatever";
+               String str="Welcome to this wold where can do whatever you want whatever";
 
 		List<String>list = Arrays.asList(str.split(" "));
 		Map<String, Long> map=list.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
 		System.out.println(map);
 
-		System.out.println();
-		System.out.println();
-
-		List<String> list1=list;
-		System.out.println();
-
-		//-----------------------------------------------------------------------------------------------------------------	
+		
+              2.)  Count the occurance of wovels in given string
 
 		String input ="hellohello";
+		
 		long count=input.chars().filter(x-> { return (x=='a' ||x=='e' ||x=='i' || x=='o' || x=='u');}).count();
-
 		System.out.println(count);
-		System.out.println();
+	
 
 
-		//-----------------------------------------------------------------------------------------------------------------	
+	      3.)  Count the occurance of each Character in String and then print the highest Occuring caharacter	
 
 
-
-		Map<String, Long> strs =input.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
+               String inputt ="hellohello";
+	       
+		Map<String, Long> strs =inputt.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
 		System.out.println(strs);
-		System.out.println();
 		
-		Map<Object, Object> sortedMaps 
-        = strs.entrySet()
-                   .stream()
-                   .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                   .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,  e2) -> e2, LinkedHashMap::new));
 		
-	    Entry<Object, Object>m= sortedMaps.entrySet().stream().findFirst().get();
+		Map<Object, Object> sortedMaps = strs.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                                                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,  e2) -> e2, LinkedHashMap::new));
+		
+	        Entry<Object, Object>m= sortedMaps.entrySet().stream().findFirst().get();
 
-			System.out.println(m.getKey()+ ":" + m.getValue()); //printing the first value of map
+		System.out.println(m.getKey()+ ":" + m.getValue()); //printing the first value of map
 		
 
-		//String Joiner-----------------------------------------------------------------------------------------------------------------	
-
-
-		String take ="hello hello kaise ho tum sab"; 
-
-		List<String> lst=  Arrays.asList(take.split(" "));
-		StringJoiner sj=new StringJoiner("-", "[", "]" );
-		for(String ls:lst)
-		{
-			sj.add(ls);
-		}
-		System.out.println(sj.toString());
-		System.out.println();
+	
 		
 		
-		
-		//counting in map and sorting and getting the top element of map-------------------------------------------------------
+		4.) Counting in map and sorting and getting the top element of map
 		
 		List<Integer>ls=Arrays.asList(1,2,3,1,4,5,7,4,1,8,2,3,4,1,1,2,2,2,2,2,2);
 		
 		Map<Integer, Long>maps=ls.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
 		
-		Map<Integer, Long> sortedMap 
-        = maps.entrySet()
-                   .stream()
-                   .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                   .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,  e2) -> e2, LinkedHashMap::new));
+		 Map<Integer, Long> sortedMap = maps.entrySet().stream()
+                                               .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                                               .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,  e2) -> e2, LinkedHashMap::new));
  
 
-	     Map.Entry<Integer, Long>m1= sortedMap.entrySet().stream().findFirst().get();
+	         Map.Entry<Integer, Long>m1= sortedMap.entrySet().stream().findFirst().get();
 
-		System.out.println(m1.getKey()+ ":" + m1.getValue()); //printing the first value of map
+		 System.out.println(m1.getKey()+ ":" + m1.getValue()); //printing the first value of map
 			
 
-	}
-
-
-
-
-
-}
