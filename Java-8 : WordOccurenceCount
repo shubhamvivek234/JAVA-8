@@ -1,7 +1,7 @@
  
  
  
-             1.)  Count the occurance of each word
+             1.)  #Count the occurance of each word
  
 
                String str="Welcome to this wold where can do whatever you want whatever";
@@ -54,5 +54,15 @@
 	         Map.Entry<Integer, Long>m1= sortedMap.entrySet().stream().findFirst().get();
 
 		 System.out.println(m1.getKey()+ ":" + m1.getValue()); //printing the first value of map
+		 
+		 
+		 
+		 
+		 
+		5.) Second Highest Salary Of Employee
+		 
+		
+		 Optional<Employee> s1= empList.stream().sorted(Comparator.comparing(Employee ::getSalary).reversed()).skip(1).findFirst();
+		 System.out.println(s1.get());
 			
 
