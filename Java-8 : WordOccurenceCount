@@ -1,7 +1,7 @@
  
  
  
-             1.)  #Count the occurance of each word
+             1.)  Count the occurance of each word
  
 
                String str="Welcome to this wold where can do whatever you want whatever";
@@ -64,5 +64,36 @@
 		
 		 Optional<Employee> s1= empList.stream().sorted(Comparator.comparing(Employee ::getSalary).reversed()).skip(1).findFirst();
 		 System.out.println(s1.get());
+		 
+		 
+		6.) Using comparator to sort object on multiple Parameters
+		
+		Given List
+		
+		List<Employee>ls=new ArrayList<>();
+		ls.add(new Employee(101,"shubh",1002,"active",2000));
+		ls.add(new Employee(104,"shubh",1002,"active",4000));
+		ls.add(new Employee(102,"kriti",1001,"active",3000));
+		ls.add(new Employee(103,"shubh1",1001,"inactive",5000));
+		
+		Solution(Sorting them on the incresing order of there Name and then on decreasing order of there Salary)
+		
+		
+		Comparator<Employee> c1 = Comparator
+				.comparing(Employee::getEmpName);
+
+		Comparator<Employee> c2 = Comparator
+				.comparing(Employee::getSalary).reversed();
+
+		List<Employee> sortedEmployees = ls.stream().sorted(c1.thenComparing(c2))
+				                 .collect(Collectors.toList());
+		System.out.println(sortedEmployees);
+	
+
+		
+		
+		
+		
+		
 			
 
